@@ -115,7 +115,7 @@ class App extends Component {
 
     return (
       <Elem name="infobar" tag={Space} size="small">
-        <span>Task #{id}</span>
+        <span>Task 123 #{id}</span>
 
         {queue && <span>{queue}</span>}
       </Elem>
