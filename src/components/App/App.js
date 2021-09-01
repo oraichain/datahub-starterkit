@@ -5,6 +5,7 @@ import React, { Component } from "react";
 import { Result, Spin } from "antd";
 import { getEnv, getRoot } from "mobx-state-tree";
 import { observer, Provider } from "mobx-react";
+import { hot } from "react-hot-loader/root";
 
 /**
  * Core
@@ -37,7 +38,7 @@ import { AnnotationTabs } from "../AnnotationTabs/AnnotationTabs";
 import { SidebarPage, SidebarTabs } from "../SidebarTabs/SidebarTabs";
 import { AnnotationTab } from "../AnnotationTab/AnnotationTab";
 import { Block, Elem } from "../../utils/bem";
-import './App.styl';
+import "./App.styl";
 import { Space } from "../../common/Space/Space";
 
 /**
@@ -68,11 +69,7 @@ class App extends Component {
         <Elem name="annotation">
           <TreeValidation errors={this.props.store.annotationStore.validation} />
         </Elem>
-        {store.hasInterface('infobar') && (
-          <Elem name="infobar">
-            Task #{store.task.id}
-          </Elem>
-        )}
+        {store.hasInterface("infobar") && <Elem name="infobar">Task #{store.task.id}</Elem>}
       </Block>
     );
   }
@@ -99,16 +96,12 @@ class App extends Component {
     return (
       <>
         {!as.viewingAllAnnotations && !as.viewingAllPredictions && (
-          <Block
-            key={(as.selectedHistory ?? as.selected)?.id}
-            name="main-view"
-            onScrollCapture={this._notifyScroll}
-          >
+          <Block key={(as.selectedHistory ?? as.selected)?.id} name="main-view" onScrollCapture={this._notifyScroll}>
             <Elem name="annotation">
               {Tree.renderItem(root)}
               {this.renderRelations(as.selected)}
             </Elem>
-            {getRoot(as).hasInterface('infobar') && this._renderInfobar(as)}
+            {getRoot(as).hasInterface("infobar") && this._renderInfobar(as)}
           </Block>
         )}
         {as.viewingAllAnnotations && this.renderAllAnnotations()}
@@ -200,13 +193,13 @@ class App extends Component {
                 showAnnotations={store.hasInterface("annotations:tabs")}
                 showPredictions={store.hasInterface("predictions:tabs")}
                 allowCreateNew={store.hasInterface("annotations:add-new")}
-                allowViewAll={store.hasInterface('annotations:view-all')}
+                allowViewAll={store.hasInterface("annotations:view-all")}
               />
               {as.validation === null
                 ? this._renderUI(as.selectedHistory?.root ?? root, as)
                 : this.renderConfigValidationException(store)}
             </div>
-            {(viewingAll === false) && (
+            {viewingAll === false && (
               <div className={stMenu + " ls-menu"}>
                 {store.hasInterface("side-column") && (
                   <SidebarTabs active="annotation">
@@ -215,7 +208,7 @@ class App extends Component {
                     </SidebarPage>
                     {this.props.panels.map(({ name, title, Component }) => (
                       <SidebarPage key={name} name={name} title={title}>
-                        <Component/>
+                        <Component />
                       </SidebarPage>
                     ))}
                   </SidebarTabs>
@@ -236,4 +229,4 @@ class App extends Component {
   };
 }
 
-export default observer(App);
+export default observer(hot(App));
