@@ -10457,10 +10457,10 @@ watchpack@^2.2.0:
     glob-to-regexp "^0.4.1"
     graceful-fs "^4.1.2"
 
-wavesurfer.js@^3.3.3:
-  version "3.3.3"
-  resolved "https://registry.yarnpkg.com/wavesurfer.js/-/wavesurfer.js-3.3.3.tgz#9b16a62335c6bd13a3d55deb895a336d027ccb51"
-  integrity sha512-meko20S9in+V5xBLSVV/9uYVBSbx5AsJNkAslZ+a5yYIeFGYwcCo4Yd1sUpSGaiNnyflzrJwC7x7TdJFYrdT8w==
+wavesurfer.js@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/wavesurfer.js/-/wavesurfer.js-6.0.0.tgz#61a249c7c59e2222bbb37d876c8ac98cb9731a29"
+  integrity sha512-38sYA7wqKBDTh67gle7TcgTD/ihA68eMlMZfUcJWzvolZts3K2Z/d4ZJtXFyNqEpDzhPnMNyIybcWRQwNt2NKA==
 
 wbuf@^1.1.0, wbuf@^1.7.3:
   version "1.7.3"
